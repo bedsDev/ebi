@@ -3,11 +3,52 @@
 <head>
     <script src="inputXml.js"></script>
     <script src="parsingXml.js"></script>
+    <style>
+    body{
+        margin-left:15%;
+        margin-right:15%;
+    }
+    tr:hover{
+        background: grey;
+    }
+    table,tr,td{
+    	border: 1px solid green;
+    }
+    td {
+    	text-align: center;
+    	width: 90px;
+    }
+    </style>
 </head>
 
 <body>
     <h1>EBI XML parsing</h1>
+
+  
+    
+    <h1>a). Answer</h1>
     <div id="display"></div>
+    <h1>b).	How	would	you	design	a	test	suite	for	the	above	application?</h1>
+    <div>
+    <ol>
+    <li>To check whether the matrix is symmetric </li>
+    <li>sum of a row except for the diagonal element  = the value of the diagonal element; so is columns </li>
+    
+    <li>To count number of total articles of a specifice author = the diagonal element</li>
+    <li>To count number of total articles of a pair of authors </li>
+    <ol>
+    </div>
+    <h1>c).	What	problems	do	you	foresee	in	scaling	the	above	
+solution	to	these	numbers of	records.</h1>
+<div>
+<ol>
+<li>There is not enough memory to load all of the data in once.</li>
+<li>data integrity and data corruption</li>
+
+<li>synchronisation for the distributed computation</li>
+</ol>
+
+    </div>
     <script>
     	run();
     </script>

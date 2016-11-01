@@ -1,5 +1,3 @@
-
-
 function run() {
     var articleJson = parseXml2Json(articlesXml);
     var counter = countAuthorPublications(articleJson);
@@ -18,28 +16,32 @@ function displayOnPage(counter) {
     var row1 = "<tr> <td></td>";
     authors.map(function(author) {
         row1 += "<td>"
-        row1 += authorMap[author].last + "</br>" + authorMap[author].init;
+        row1 += authorMap[author].last + "</br>" + authorMap[author].fore;
         row1 += "</td>";
     });
     row1 += "</tr>";
 
     html += row1;
     var row;
-    authors.map(function(authorRow,indxRow) {
+    authors.map(function(authorRow, indxRow) {
         row = "<tr><td>"
-        row += authorMap[authorRow].last + "</br>" + authorMap[authorRow].init;
+        row += authorMap[authorRow].last + "</br>" + authorMap[authorRow].fore;
         row += "</td>";
 
-        authors.map(function(authorCol,indxCol) { 
-            row += "<td>"
-            row += insersection(counts[authorRow],counts[authorCol]).length;
-row += "</td>"
+        authors.map(function(authorCol, indxCol) {
+             row += "<td>"
+            if(authorRow ===authorCol ){
+                row +=counts[authorRow].length;
+            }else{
+                row += intersection(counts[authorRow], counts[authorCol]).length;
+            }
+            row += "</td>"
         });
 
         row += "</tr>";
         html += row;
     });
-    
+
     html += "</table>";
     console.log(html)
     var displayDiv = document.getElementById("display");
@@ -76,10 +78,11 @@ function countAuthorPublications(articles) {
 
 }
 
-function insersection(arr1, arr2) {
+function intersection(arr1, arr2) {
     var common = [];
     arr1.map(function(elem) {
-        if (arr2.indexOf(elem) > 0) {
+        console.log(elem)
+        if (arr2.indexOf(elem) >= 0) {
             common.push(elem);
         }
     })
